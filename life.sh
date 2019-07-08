@@ -26,9 +26,9 @@ branco="\033[1;37m"
 
 # Menu
 echo "${verdeClaro}
-						 ############
-						 ### MENU ###
-						 ############ 
+					 ############
+					 ### MENU ###
+					 ############ 
 "
 echo "${amarelo}
 (1) Configuração Interface
@@ -219,18 +219,18 @@ clear
 	echo "${vermelhoClaro}Criando Grupo Administrativo"
 	sleep 0.6
 	echo "${branco}"
-	addgrup administrativo
+	groupadd administrativo
 	echo "${vermelhoClaro}Criando Grupo Financeiro"
 	sleep 0.6
 	echo "${branco}"
-	addgrup financeiro
+	groupadd financeiro
 
 	echo "${azulClaro} adicionando Usuários ao Grupo"
 	sleep 9
 	echo "${vermelhoClaro} Os Usuários Que Vão Ser Adicionandos ao Grupo Administrativo serão Joao e Maria"
 	sleep 10
-	adduser joao Administrativo
-	adduser maria Administrativo
+	adduser joao administrativo
+	adduser maria administrativo
 	echo "${cyanClaro} Usuários adicionandos ao grupo administrativo com sucesso..."
 
 	echo "${purpleClaro} Os Usuários Que Vão Ser Adicionandos ao Grupo Financeiro serão pedro e tiago "
@@ -293,12 +293,12 @@ if [ "$c" = "5" ]; then
 	touch smb.conf
 
 	echo "
-[globall]
-		netbios name = ServidorDados
-		workgroup = empresax
-		server string = Servidor de Arquivos da Empresax
-		security = users
-		encript passwords yes
+[global]
+		netbios name = Servidor
+		workgroup = piribinha
+		server string = Servidor de Arquivos da Piribinha
+		security = user
+		encrypt passwords = yes
 		invalid users = root
 
 
@@ -306,7 +306,7 @@ if [ "$c" = "5" ]; then
 		path = /home/DADOS
 		writeable = yes
 		available = yes
-		valid users = @adminstrativo.@financeiro
+		valid users = @adminstrativo,@financeiro
 		comment = Servidor de Arquivos da Empresa X
 		vfs object = recycle
 		recycle:repository = /home/lixeira
